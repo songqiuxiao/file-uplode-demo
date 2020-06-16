@@ -1,0 +1,4 @@
+- 手动创建两个文件夹（nodeServer/tmp 和 nodeServer/uploads）
+- npm i
+- npm run dev
+- 有啥细节缺的自己补补.....（只是个 demo，我貌似没考虑重新上传时的数据清零）

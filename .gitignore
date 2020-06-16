@@ -1,0 +1,12 @@
+.idea
+*.iml
+.DS_Store
+dist
+build
+node_modules
+nodeServer/tmp/
+nodeServer/uploads/
+out
+gen
+.history
+./history

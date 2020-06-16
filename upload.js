@@ -52,13 +52,13 @@ app.get("/check/chunk", (req, resp) => {
   fs.stat(path.join(uploadDir, md5, chunkIndex), (err, stats) => {
     if (stats) {
       resp.send({
-        stat: 1,
+        code: 1,
         exit: true,
         desc: "Exit 1",
       });
     } else {
       resp.send({
-        stat: 1,
+        code: 1,
         exit: false,
         desc: "Exit 0",
       });
@@ -74,7 +74,7 @@ app.all("/merge", (req, resp) => {
   console.log(md5, fileName);
   mergeFiles(path.join(uploadDir, md5), uploadDir, fileName, size);
   resp.send({
-    stat: 1,
+    code: 1,
   });
 });
 
@@ -93,13 +93,13 @@ app.all("/upload", (req, resp) => {
       copyFile(file.data.path, destFile).then(
         (successLog) => {
           resp.send({
-            stat: 1,
+            code: 1,
             desc: index,
           });
         },
         (errorLog) => {
           resp.send({
-            stat: 0,
+            code: 0,
             desc: "Error",
           });
         }
@@ -137,7 +137,7 @@ async function getChunkList(filePath, folderPath, callback) {
   // 如果文件(文件名, 如:node-v7.7.4.pkg)已在存在, 不用再继续上传, 真接秒传
   if (isFileExit) {
     result = {
-      stat: 1,
+      code: 1,
       file: {
         isExist: true,
         name: filePath,
@@ -153,7 +153,7 @@ async function getChunkList(filePath, folderPath, callback) {
       fileList = await listDir(folderPath);
     }
     result = {
-      stat: 1,
+      code: 1,
       chunkList: fileList,
       desc: "folder list",
     };
